@@ -56,6 +56,15 @@
     --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
     --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+    /*input styles*/
+    --global-input-backgroundColor: White;
+    --global-input-color: var(--global-color-neutral-xxxx-dark);
+    --global-input-borderColor: var(--global-color-neutral-xxx-light);
+    --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
+    --global-input-focus-borderColor: var(--global-color-alpha);
+    --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+
 }
 
 /*------------------------------------*\
@@ -608,6 +617,11 @@ input::placeholder {
     padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
     outline: none;
     transition: border var(--global-transition-timing-alpha);
+    
+    
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    background-color: var(--global-input-backgroundColor);
+    color: var(--global-input-color);
 }
 
 .c-input:hover {
@@ -620,10 +634,94 @@ input::placeholder {
     box-shadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
 }
 
+
+
+/*
+    Component: Custom Option
+    
+*/
+
 /* option input for checkboxes and radio buttons */
 
 .c-option {
     margin-right: var(--global-whitespace-sm);
+}
+
+.c-option:hover{
+    border-color: var(--global-input-hover-borderColor);
+}
+
+.c-option:focus{
+    border-color: var(--global-input-focus-borderColor);
+}
+
+.c-option--hidden:checked + .c-custom-option {
+    /*
+      Do magic stuff here, for example:
+      background-color: red;
+    */
+  }
+
+.c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
+    /*
+      Do magic stuff here, for example:
+      fill: blue;
+    */
+}
+
+.c-option--hidden:checked{
+    transition: all 0.5s ease-in;
+    transform: rotate();
+    opacity: 1;
+}
+
+.c-custom-option{
+    display: flex;
+    flex-direction: row;
+}
+
+.c-custom-option__fake-input{
+    --c-custom-option--fake-input-size: calc(var(--global-baseling)*2);
+    
+    display: flex;
+    width:16px;
+    height:16px;
+    /* width: var(--c-custom-option--fake-input-size);/*16px
+    height: var(--c-custom-option--fake-input-size);16px */
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    margin-right: 8px;
+    align-items: center;
+    justify-content: center;
+
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    border-radius: var(--global-borderRadius);
+    
+}
+
+.c-custom-option__fake-input--checkbox{
+    border-radius: var(--global-borderRadius);
+}
+
+.c-custom-option__fake-input--radio{
+    border-radius: 100%;
+}
+
+.c-custom-option__symbol{
+    opacity:0;
+    display: block;
+}
+
+.c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+    height: 10px;
+    width: 10px;
+    fill: var(--global-color-alpha);
+}
+  
+.c-custom-option__fake-input--radio .c-custom-option__symbol {
+    height: 6px;
+    width: 6px;
+    background-color: var(--global-color-alpha);
+    border-radius: 100%; /*rond bolletje*/
 }
 
 /*
@@ -676,6 +774,8 @@ input::placeholder {
     background-color: var(--global-color-alpha-dark);
     box-shadow: none;
 }
+
+
 
 /*------------------------------------*\
 #UTILITIES
