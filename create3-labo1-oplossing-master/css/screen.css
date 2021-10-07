@@ -809,6 +809,7 @@ input::placeholder {
     ---
     Class to put on all form labels
 */
+
 .c-toggle-list {
     --toggle-list-borderColor: var(--global-color-neutral-xxx-light);
     margin-bottom: var(--global-whitespace);
@@ -901,6 +902,27 @@ input::placeholder {
 .c-option--hidden:checked + .c-custom-toggle:active .c-custom-toggle__fake-input::after {
     margin-left: -6px;
 }
+
+/*
+    Component: Custom Select
+    ---
+    Custom select dropdown
+*/
+.c-custom-select{
+    display: block;
+    position: relative;
+}
+
+.c-custom-select__symbol{
+    width: var(--global-whitespace);
+    height: var(--global-whitespace);
+    position: absolute;
+    top: calc(var(--global-whitespace) / 2);
+    right: calc(var(--global-whitespace) / 2);
+    pointer-events: none;
+    fill: var(--global-color-neutral-x-light);
+}
+
 
 /*------------------------------------*\
 #UTILITIES
